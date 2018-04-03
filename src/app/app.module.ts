@@ -1,3 +1,10 @@
+import { AddcallnumPage } from './../pages/addcallnum/addcallnum';
+import { CallNumber } from '@ionic-native/call-number';
+// import { EventModalPage } from './../pages/event-modal/event-modal';
+import { CalendarsPage } from './../pages/calendars/calendars';
+import { GraphPage } from './../pages/graph/graph';
+import { GlucosePage } from './../pages/glucose/glucose';
+import { ExportPage } from './../pages/export/export';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -8,26 +15,77 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ProfilePage } from '../pages/profile/profile';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { EmergencyPage } from '../pages/emergency/emergency';
+import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
+import { InsulinPage } from '../pages/insulin/insulin';
+import { NgCalendarModule  } from 'ionic2-calendar';
+// import { EventModalPage } from '../pages/event-modal/event-modal';
+
+
+var config = {
+  apiKey: "AIzaSyDr40HSmTxehzzjJO2AfcM0O7b8Lj1dMTg",
+  authDomain: "project-301ae.firebaseapp.com",
+  databaseURL: "https://project-301ae.firebaseio.com",
+  projectId: "project-301ae",
+  storageBucket: "project-301ae.appspot.com",
+  messagingSenderId: "910634926801"
+};
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    ProfilePage,
+    EmergencyPage,
+    ExportPage,
+    LoginPage,
+    RegisterPage,
+    GlucosePage,
+    InsulinPage,
+    GraphPage,
+    CalendarsPage,
+    AddcallnumPage
+    // EventModalPage
+    
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(config),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    NgCalendarModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    ProfilePage,
+    EmergencyPage,
+    ExportPage,
+    LoginPage,
+    RegisterPage,
+    GlucosePage,
+    InsulinPage,
+    GraphPage,
+    CalendarsPage,
+    AddcallnumPage
+    // EventModalPage
+    
+    
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    CallNumber,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

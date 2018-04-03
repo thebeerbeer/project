@@ -1,0 +1,50 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>PROFILE</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <!-- set all page center -->
+  <div class="flex flex-col items-center">
+    <img height= 100px; weight= 100px; items-center src="https://images-na.ssl-images-amazon.com/images/I/31y1r6hC1dL._SY300_.jpg">
+    <h4 text-uppercase text-center>{{name}}</h4>
+    <p text-center>{{email}}</p>
+  </div>
+
+  <ion-list margin-top>
+    <ion-item>
+      <ion-label fixed>Age:</ion-label>
+      <ion-input type="number" [(ngModel)]="age" value="{{age}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>tel:</ion-label>
+      <ion-input type="string" [(ngModel)]="tel" value="{{tel}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Gender</ion-label>
+      <ion-select [(ngModel)]="gender"> //[(ngModel)]="gender"
+        <ion-option value="f">Female</ion-option>
+        <ion-option value="m">Male</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>Height:</ion-label>
+      <ion-input type="number" [(ngModel)]="height" value="{{height}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>Weight:</ion-label>
+      <ion-input type="number" [(ngModel)]="weight" value="{{weight}}"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <button ion-button block outline (click)="save()">UPDATE</button>
+  <button ion-button block outline color="danger" (click)="logout()">LOGOUT</button>
+</ion-content>

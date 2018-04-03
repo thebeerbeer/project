@@ -1,0 +1,35 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>GLUCOSE </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <br>
+  <div text-center>
+    <h2>
+      <b>ปริมาณน้ำตาลในเลือด</b>
+    </h2>
+  </div>
+
+  <p>
+    <ion-item>
+      <ion-label floating>mg/dL (number only)</ion-label>
+      <ion-input type="number" [(ngModel)]="glucose"></ion-input>
+    </ion-item>
+  </p>
+
+
+  <div padding>
+    <button ion-button color="danger" block (click)='addglucose()'>Add</button>
+  </div>
+  <ion-item *ngFor="let glucose of results ; let i = index">
+    <br>
+    <div padding-right>
+      <h2>Glucose{{i+1}}: {{glucose.data.glucose}} </h2>
+      <h3>Date: {{glucose.data.datenow}} </h3>
+    </div>
+  </ion-item>
+</ion-content>

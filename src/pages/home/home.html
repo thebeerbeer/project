@@ -1,18 +1,43 @@
 <ion-header>
+
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>MENU</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+<ion-content padding text-center>
 
   <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
+    <button ion-button full large color="secondary" (click)="gotoglucose()">GLUCOSE</button>
   </p>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <p>
+    <button ion-button full large color="secondary" (click)="gotoinsulin()">INSULIN</button>
+  </p>
+
+  <p>
+    <button ion-button full large color="secondary" (click)="gotograph()">GRAPH</button>
+  </p>
+
+  <p>
+    <button ion-button full large color="secondary" (click)="gotocalendas()">CALENDARS</button>
+  </p>
+
+  <p>
+    <button ion-button full large color="secondary" (click)="gotoprofile()">USER</button>
+  </p>
+
+  <p>
+    <button ion-button full large color="secondary" (click)="gotoemer()">EMERGENCY</button>
+  </p>
+
+  <div>
+    <button ion-button full clear color="danger" (click)="logout()">LOGOUT</button>
+  </div>
+
+
+  <!-- <button ion-button secondary menuToggle>Toggle Menu</button> -->
 </ion-content>

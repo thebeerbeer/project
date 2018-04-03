@@ -1,0 +1,61 @@
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>Register</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+    <ion-list>
+  
+      <ion-item>
+        <ion-label floating>Name</ion-label>
+        <ion-input type="text" [(ngModel)]="name"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label floating>Age</ion-label>
+        <ion-input type="number" [(ngModel)]="age"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label floating>Tel.</ion-label>
+        <ion-input type="string" [(ngModel)]="tel"></ion-input>
+      </ion-item>
+      
+  
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="email" [(ngModel)]="email"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>height</ion-label>
+        <ion-input type="number" [(ngModel)]="height"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>weight</ion-label>
+        <ion-input type="number" [(ngModel)]="weight"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Gender</ion-label>
+        <ion-select [(ngModel)]="gender">
+          <ion-option value="f">Female</ion-option>
+          <ion-option value="m">Male</ion-option>
+        </ion-select>
+      </ion-item>
+  
+    </ion-list>
+    <div padding>
+      <button ion-button full (click)="register()">Register</button>
+    </div>
+  </ion-content>
