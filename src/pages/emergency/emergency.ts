@@ -39,10 +39,6 @@ export class EmergencyPage extends BasePage {
   call() {
     this.uid = this.firebaseAuth.auth.currentUser.uid;
 
-    this.firebaseFirestore
-    .collection('users')
-    .doc(this.uid)
-    .collection('emergency')
     this.callNumber.callNumber("0882533948", true)
       .then(res => console.log('Launched dialer!', res))
       .catch(err => console.log('Error launching dialer', err));
