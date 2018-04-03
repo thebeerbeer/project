@@ -24,8 +24,11 @@ import { EmergencyPage } from '../pages/emergency/emergency';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { InsulinPage } from '../pages/insulin/insulin';
-import { NgCalendarModule  } from 'ionic2-calendar';
+import { NgCalendarModule } from 'ionic2-calendar';
 // import { EventModalPage } from '../pages/event-modal/event-modal';
+import { LocalNotifications } from '@ionic-native/local-notifications';
+import { NotificationPage } from '../pages/notification/notification';
+import { AddNotificationPage } from '../pages/add-notification/add-notification';
 
 
 var config = {
@@ -51,9 +54,11 @@ var config = {
     InsulinPage,
     GraphPage,
     CalendarsPage,
-    AddcallnumPage
+    AddcallnumPage,
+    NotificationPage,
+    AddNotificationPage
     // EventModalPage
-    
+
   ],
   imports: [
     BrowserModule,
@@ -77,16 +82,19 @@ var config = {
     InsulinPage,
     GraphPage,
     CalendarsPage,
-    AddcallnumPage
+    AddcallnumPage,
+    NotificationPage,
+    AddNotificationPage
     // EventModalPage
-    
-    
+
+
   ],
   providers: [
     StatusBar,
     SplashScreen,
     CallNumber,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    LocalNotifications,
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }
