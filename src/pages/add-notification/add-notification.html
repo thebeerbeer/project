@@ -1,0 +1,16 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>AddNotification</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>เวลา</ion-label>
+    <ion-datetime displayFormat="HH:mm" [(ngModel)]="time"></ion-datetime>
+  </ion-item>
+  <button class="mt-8" ion-button block (click)="add()">เพิ่ม</button>
+</ion-content>

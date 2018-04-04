@@ -12,6 +12,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { ProfilePage } from '../pages/profile/profile';
+import { NotificationPage } from '../pages/notification/notification';
 
 @Component({
   templateUrl: 'app.html'
@@ -54,7 +55,8 @@ export class MyApp {
       { title: 'Glucose', component: GlucosePage },
       { title: 'Graph', component: GraphPage },
       { title: 'Emergency', component: EmergencyPage },
-      { title: 'Export', component: ExportPage }
+      { title: 'Export', component: ExportPage },
+      { title: 'Notification', component: NotificationPage }
 
 
     ];
