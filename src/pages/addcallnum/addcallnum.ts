@@ -20,7 +20,7 @@ export class AddcallnumPage {
   name: string;
   tel: string;
   description: string;
-  image: string;
+  // image: string;
   
 
   constructor(
@@ -39,8 +39,8 @@ export class AddcallnumPage {
     .add({
       name: this.name,
       description: this.description,
-      tel: this.tel,
-      img: this.image
+      tel: this.tel
+      // img: this.image
     })
     .then(() => {
       this.navCtrl.pop();
