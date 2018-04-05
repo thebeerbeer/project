@@ -1,3 +1,4 @@
+import { NotificationPage } from './../notification/notification';
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, DateTime } from 'ionic-angular';
 import { LocalNotifications } from '@ionic-native/local-notifications';
@@ -23,7 +24,7 @@ export class AddNotificationPage {
   }
 
   add() {
-    const t = moment(this.time, "HH:mm");
+    const t = moment(this.time, "hh:mm");
     const id = Math.floor(Math.random() * 9999);
 
     this.notification.schedule({
@@ -52,6 +53,9 @@ export class AddNotificationPage {
     console.log('ionViewDidLoad AddNotificationPage');
   }
 
+  goback(){
+    this.viewCtrl.dismiss()
+  }
 
 
 

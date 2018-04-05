@@ -1,13 +1,16 @@
 <ion-header>
 
   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon color="dark" name="menu"></ion-icon>
+    </button>
     <ion-title>NotificationPage</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="showAddNotification()">
-        <ion-icon name="add"></ion-icon>
+        <ion-icon color="dark" name="add"></ion-icon>
       </button>
       <button ion-button icon-only (click)="clearAll()">
-        <ion-icon name="trash"></ion-icon>
+        <ion-icon color="dark" name="trash"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -20,7 +23,7 @@
     <ion-item *ngFor="let notification of notifications">
       {{format(notification.time)}}
       <button ion-button clear item-end (click)="delete(notification.id,notification.dataid)">
-        <ion-icon name="trash"></ion-icon>
+        <ion-icon name="md-trash"></ion-icon>
       </button>
     </ion-item>
   </ion-list>

@@ -1,8 +1,8 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="dark">
     <button ion-button menuToggle>
-      <ion-icon color="dark" name="menu"></ion-icon>
+      <ion-icon color="light" name="menu"></ion-icon>
     </button>
     <ion-title>EMERGENCY CALL</ion-title>
     <ion-buttons end>
@@ -19,27 +19,18 @@
   <ion-list>
     <ion-item-sliding *ngFor="let emergency of results">
       <ion-item>
-        <ion-avatar item-start>
-          <img [src]="emergency.data.img">
-        </ion-avatar>
         <div padding-right>
-          <h2>{{emergency.data.name}}</h2>
-          <p>{{emergency.data.tel}}</p>
+          <h1>{{emergency.data.name}}</h1>
+          <h3>{{emergency.data.tel}}</h3>
         </div>
 
-        <!-- <div>
-            <button ion-button (click)='call()'>
-              <ion-icon name="call"></ion-icon>
-              Call
-            </button>
-          </div> -->
 
       </ion-item>
       <ion-item-options side="right">
-        <button ion-button>
+        <!-- <button ion-button>
           <ion-icon name="md-create"></ion-icon>
           Edit
-        </button>
+        </button> -->
         <button ion-button color="danger" (click)='delete(emergency.id)'>
           <ion-icon name="ios-trash"></ion-icon>
           Delete

@@ -1,3 +1,4 @@
+import { NotificationPage } from './../notification/notification';
 import { CalendarsPage } from './../calendars/calendars';
 import { GraphPage } from './../graph/graph';
 import { ProfilePage } from './../profile/profile';
@@ -44,5 +45,8 @@ export class HomePage {
   }
   gotocalendas() {
     this.navCtrl.push(CalendarsPage);
+  }
+  gotonotification() {
+    this.navCtrl.push(NotificationPage);
   }
 }

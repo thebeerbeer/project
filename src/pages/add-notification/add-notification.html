@@ -1,7 +1,12 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>AddNotification</ion-title>
+    <ion-title>Add-Notification</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goback()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -9,8 +14,8 @@
 
 <ion-content padding>
   <ion-item>
-    <ion-label>เวลา</ion-label>
-    <ion-datetime displayFormat="HH:mm" [(ngModel)]="time"></ion-datetime>
+    <ion-label>TIME</ion-label>
+    <ion-datetime displayFormat="hh:mm" [(ngModel)]="time"></ion-datetime>
   </ion-item>
-  <button class="mt-8" ion-button block (click)="add()">เพิ่ม</button>
+  <button class="mt-8" ion-button block (click)="add()">ADD</button>
 </ion-content>

@@ -1,9 +1,9 @@
 <ion-header>
 
   <ion-navbar color="dark">
-      <button ion-button menuToggle>
-          <ion-icon color="dark" name="menu"></ion-icon>
-        </button>
+    <button ion-button menuToggle>
+      <ion-icon color="dark" name="menu"></ion-icon>
+    </button>
     <ion-title>INSULIN</ion-title>
   </ion-navbar>
 
@@ -13,24 +13,37 @@
 <ion-content padding>
   <ion-list>
     <ion-row>
-      <ion-col col-5 no-padding>
-        <img style="width: 80px; height: 80px;" src="assets/imgs/blood-drop.png">
+      <ion-col col-4 no-padding>
+        <img style="width: 114.328px; height: 110.547px;" src="assets/imgs/blood-drop.png">
       </ion-col>
-      <div col-6>
-        <h4 text-center>Total daily insulin dose (TDD)</h4>
+      <div col-8 no-padding>
+        <h3 text-center>GLUCOSE</h3>
+        <h5 text-center>ระดับน้ำตาลในเลือด</h5>
+
+        <ion-item>
+          <ion-label floating>mg/dL (number only)</ion-label>
+          <ion-input type="number" [(ngModel)]="glucose"></ion-input>
+        </ion-item>
       </div>
     </ion-row>
-    <ion-row>
-      <ion-item col-6>
-        <ion-label floating>Weight</ion-label>
-        <ion-input type="number" value=""></ion-input>
-      </ion-item>
-      <ion-item col-6 text-right>
-        <ion-label floating>insulin</ion-label>
-        <ion-input type="number" value=""></ion-input>
-      </ion-item>
-    </ion-row>
   </ion-list>
+
+  <ion-list>
+      <ion-row>
+        <ion-col col-4 no-padding>
+          <img style="width: 114.328px; height: 110.547px;" src="assets/imgs/doughnut.png">
+        </ion-col>
+        <div col-8 no-padding>
+          <h3 text-center>CARBOHYDRATE</h3>
+          <h5 text-center>คาร์ปของอาหาร</h5>
+  
+          <ion-item>
+            <ion-label floating>mg/dL (number only)</ion-label>
+            <ion-input type="number" [(ngModel)]="glucose"></ion-input>
+          </ion-item>
+        </div>
+      </ion-row>
+    </ion-list>
 
   <!-- <ion-list>
     <ion-label color="primary">Basal insulin dose:</ion-label>
