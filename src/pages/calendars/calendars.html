@@ -10,15 +10,12 @@
     </ion-buttons>
   </ion-navbar>
 </ion-header>
- 
+
 <ion-content>
-<calendar [eventSource]="eventSource"
-        [calendarMode]="calendar.mode"
-        [currentDate]="calendar.currentDate"
-        (onEventSelected)="onEventSelected($event)"
-        (onTitleChanged)="onViewTitleChanged($event)"
-        (onTimeSelected)="onTimeSelected($event)"
-        step="30"
-        class="calendar">
-      </calendar>
+  <canvas class="mb-8" #chart baseChart width="360" height="300" [(datasets)]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+    [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+
+  <calendar [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" (onTimeSelected)="onTimeSelected($event)" showEventDetail="false"
+    step="30" class="calendar-event-inner">
+  </calendar>
 </ion-content>

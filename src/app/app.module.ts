@@ -29,7 +29,10 @@ import { NgCalendarModule } from 'ionic2-calendar';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { NotificationPage } from '../pages/notification/notification';
 import { AddNotificationPage } from '../pages/add-notification/add-notification';
+import { AddFoodPage } from '../pages/add-food/add-food';
+import { ResultPage } from '../pages/result/result';
 
+import { ChartsModule } from 'ng2-charts';
 
 var config = {
   apiKey: "AIzaSyDr40HSmTxehzzjJO2AfcM0O7b8Lj1dMTg",
@@ -56,7 +59,9 @@ var config = {
     CalendarsPage,
     AddcallnumPage,
     NotificationPage,
-    AddNotificationPage
+    AddNotificationPage,
+    AddFoodPage,
+    ResultPage,
     // EventModalPage
 
   ],
@@ -67,6 +72,7 @@ var config = {
     AngularFireAuthModule,
     AngularFirestoreModule,
     NgCalendarModule,
+    ChartsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -84,7 +90,9 @@ var config = {
     CalendarsPage,
     AddcallnumPage,
     NotificationPage,
-    AddNotificationPage
+    AddNotificationPage,
+    AddFoodPage,
+    ResultPage
     // EventModalPage
 
 
