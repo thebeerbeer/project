@@ -63,23 +63,23 @@ export class ProfilePage extends BasePage {
         console.log(data)
       })
 
-    this.firebaseFirestore
-      .collection('insulintype')
-      .doc(this.name)
-      .snapshotChanges()
-      .subscribe(
-        data => {
-          this.intype = [];
-          data.map(action => {
-            this.intype.push({
-              id: action.payload.doc.id,
-              data: action.payload.doc.data()
-            })
-          });
-          this.results = this.intype;
-          console.log(this.intype)
-        }
-      )
+    // this.firebaseFirestore
+    //   .collection('insulintype')
+    //   .doc(this.name)
+    //   .snapshotChanges()
+    //   .subscribe(
+    //     data => {
+    //       this.intype = [];
+    //       data.map(action => {
+    //         this.intype.push({
+    //           id: action.payload.doc.id,
+    //           data: action.payload.doc.data()
+    //         })
+    //       });
+    //       this.results = this.intype;
+    //       console.log(this.intype)
+    //     }
+    //   )
        
        
 
