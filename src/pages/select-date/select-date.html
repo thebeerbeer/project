@@ -1,0 +1,22 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>SelectDate</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="select()">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <calendar [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" (onTimeSelected)="onTimeSelected($event)" showEventDetail="false"
+    step="30" class="calendar-event-inner">
+  </calendar>
+</ion-content>
