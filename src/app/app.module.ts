@@ -33,6 +33,11 @@ import { AddFoodPage } from '../pages/add-food/add-food';
 import { ResultPage } from '../pages/result/result';
 
 import { ChartsModule } from 'ng2-charts';
+import { SelectDatePage } from '../pages/select-date/select-date';
+import { PdfProvider } from './providers/pdf/pdf';
+import { DocumentProvider } from '../providers/document/document';
+import { File } from '@ionic-native/file';
+import { FileOpener } from '@ionic-native/file-opener';
 
 var config = {
   apiKey: "AIzaSyDr40HSmTxehzzjJO2AfcM0O7b8Lj1dMTg",
@@ -62,6 +67,7 @@ var config = {
     AddNotificationPage,
     AddFoodPage,
     ResultPage,
+    SelectDatePage,
     // EventModalPage
 
   ],
@@ -92,7 +98,8 @@ var config = {
     NotificationPage,
     AddNotificationPage,
     AddFoodPage,
-    ResultPage
+    ResultPage,
+    SelectDatePage
     // EventModalPage
 
 
@@ -102,7 +109,10 @@ var config = {
     SplashScreen,
     CallNumber,
     LocalNotifications,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    DocumentProvider,
+    File,
+    FileOpener
   ]
 })
 export class AppModule { }

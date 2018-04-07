@@ -1,9 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController, ViewController } from 'ionic-angular';
 import * as moment from 'moment';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { BaseChartDirective } from 'ng2-charts';
+import { SelectDatePage } from '../select-date/select-date';
+import { PdfProvider } from '../../app/providers/pdf/pdf';
+import { DocumentProvider } from '../../providers/document/document';
+import { ResultPage } from '../result/result';
 
 @IonicPage()
 @Component({
@@ -12,6 +16,7 @@ import { BaseChartDirective } from 'ng2-charts';
 })
 export class CalendarsPage {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective;
+  @ViewChild('chart') private _chart: BaseChartDirective;
 
   viewTitle: string;
   selectedDay = new Date();
@@ -21,23 +26,20 @@ export class CalendarsPage {
     currentDate: new Date()
   };
 
-  @ViewChild('chart') private _chart: BaseChartDirective;
-
+  segment = 'chart';
 
   public lineChartData: Array<any> = [
     { data: [], label: 'ระดับน้ำตาลในเลือด' },
     { data: [], label: 'เป้าหมาย' },
-
-    // { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' },
-    // { data: [18, 48, 77, 9, 100, 27, 40], label: 'Series C' }
   ];
 
   public lineChartLabels: Array<any> = [];
   public lineChartOptions: any = {
     responsive: true
   };
+
   public lineChartColors: Array<any> = [
-    { // grey
+    {
       backgroundColor: 'rgba(148,159,177,0.2)',
       borderColor: 'rgba(148,159,177,1)',
       pointBackgroundColor: 'rgba(148,159,177,1)',
@@ -45,26 +47,12 @@ export class CalendarsPage {
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     },
-    // { // dark grey
-    //   backgroundColor: 'rgba(77,83,96,0.2)',
-    //   borderColor: 'rgba(77,83,96,1)',
-    //   pointBackgroundColor: 'rgba(77,83,96,1)',
-    //   pointBorderColor: '#fff',
-    //   pointHoverBackgroundColor: '#fff',
-    //   pointHoverBorderColor: 'rgba(77,83,96,1)'
-    // },
-    // { // grey
-    //   backgroundColor: 'rgba(148,159,177,0.2)',
-    //   borderColor: 'rgba(148,159,177,1)',
-    //   pointBackgroundColor: 'rgba(148,159,177,1)',
-    //   pointBorderColor: '#fff',
-    //   pointHoverBackgroundColor: '#fff',
-    //   pointHoverBorderColor: 'rgba(148,159,177,0.8)'
-    // }
   ];
+
   public lineChartLegend: boolean = true;
   public lineChartType: string = 'line';
 
+  data = [];
 
   constructor(
     public navCtrl: NavController,
@@ -73,12 +61,14 @@ export class CalendarsPage {
     private alertCtrl: AlertController,
     public firebaseFirestore: AngularFirestore,
     public firebaseAuth: AngularFireAuth,
+    public viewCtrl: ViewController,
+    public document: DocumentProvider,
   ) {
   }
 
   ionViewDidLoad() {
-
-
+    this.viewTitle = new Date().toDateString();
+    this.onTimeSelected(new Date().toDateString());
   }
 
 
@@ -99,19 +89,18 @@ export class CalendarsPage {
 
 
 
-  onTimeSelected(ev) {
-
-    this.selectedDay = ev.selectedTime.toISOString();
-    this.viewTitle = ev.selectedTime.toDateString();
-
+  onTimeSelected(date) {
+    this.viewTitle = date;
     this.firebaseFirestore
       .collection('users')
       .doc(this.firebaseAuth.auth.currentUser.uid)
       .collection('glucose')
-      .doc(ev.selectedTime.toDateString())
+      .doc(date)
       .collection('datas', ref => ref.orderBy('time'))
       .valueChanges() //ติดตามข้อมูลเวลาข้อมูลเปลี่ยนแปลง
       .subscribe((data: any) => {
+        this.data = data;
+        console.log(this.data);
 
         setTimeout(() => {
           if (this.chart && this.chart.chart && this.chart.chart.config) {
@@ -124,6 +113,29 @@ export class CalendarsPage {
           }
         });
       })
+
+  }
+
+  selectDate() {
+    const modal = this.modalCtrl.create(SelectDatePage);
+    modal.onDidDismiss(data => {
+      if (data !== undefined) {
+        this.onTimeSelected(data.date);
+        console.log(data);
+      }
+    })
+    modal.present();
+  }
+
+  openPdf() {
+    this.document.create({});
+  }
+
+  showResult(data) {
+    this.navCtrl.push(ResultPage, {
+      data: data
+    })
+
 
   }
 }

@@ -113,13 +113,15 @@ export class InsulinPage extends BasePage {
       .collection("datas")
       .add({
         bolusDose: Math.ceil(bolusDose),
-        ...this.data
+        ...this.data,
+        foods: this.foods,
       });
 
 
     this.navCtrl.push(ResultPage, {
       data: {
         ...this.data,
+        foods: this.foods,
         bolusDose: Math.ceil(bolusDose),
       },
     });

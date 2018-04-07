@@ -4,18 +4,73 @@
       {{ viewTitle }}
     </ion-title>
     <ion-buttons end>
-      <!-- <button ion-button icon-only (click)="addEvent()">
-        <ion-icon name="add"></ion-icon>
+      <!-- <button ion-button icon-only (click)="openPdf()">
+        <ion-icon name="document"></ion-icon>
       </button> -->
+      <button ion-button icon-only (click)="selectDate()">
+        <ion-icon name="calendar"></ion-icon>
+      </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <canvas class="mb-8" #chart baseChart width="360" height="300" [(datasets)]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
-    [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+  <div padding>
+    <ion-segment [(ngModel)]="segment">
+      <ion-segment-button value="chart">
+        Chart
+      </ion-segment-button>
+      <ion-segment-button value="info">
+        Info
+      </ion-segment-button>
+    </ion-segment>
+  </div>
 
-  <calendar [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" (onTimeSelected)="onTimeSelected($event)" showEventDetail="false"
-    step="30" class="calendar-event-inner">
-  </calendar>
+  <div [ngSwitch]="segment">
+
+    <canvas *ngSwitchCase="'chart'" class="mb-8" #chart baseChart width="360" height="300" [(datasets)]="lineChartData" [labels]="lineChartLabels"
+      [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)"
+      (chartClick)="chartClicked($event)"></canvas>
+
+    <div>
+      <ion-item-group *ngSwitchCase="'info'">
+        <!-- <ion-item-divider color="light">A</ion-item-divider> -->
+        <ion-item *ngFor="let d of data" (click)="showResult(d)">
+          <ion-label class="flex justify-between items-center">
+           <div class="text-center flex flex-col">
+            <span class="text-2xl text-grey-darker font-medium">{{d.bg}} mgs</span>
+            <span class="text-grey text-xl">{{d.bolusDose}} units</span>
+           </div>
+            <span class="text-grey text-xl">{{d.time}} </span>
+          </ion-label>
+        </ion-item>
+      </ion-item-group>
+    </div>
+
+    <!-- <div *ngSwitchCase="'info'" class="flex justify-center flex-col items-center mt-8">
+      <div class="text-center border-4 flex flex-col justify-center rounded-full h-64 w-64 mb-8">
+        <span class="text-grey-darker font-light">ปริมาณอินสูริน</span>
+
+        <span class="text-5xl my-4 font-medium">{{data.bolusDose}}</span>
+        <span class="text-grey-darker font-light">units</span>
+      </div>
+      <div class="mt-8 flex justify-between w-3/4">
+        <div class="text-center">
+          <p>{{data.targetBg}}</p>
+          <span class="text-grey-dark font-light mt-4">เป้าหมาย</span>
+        </div>
+        <div class="text-center">
+          <p>{{data.bg}}</p>
+          <span class="text-grey-dark font-light mt-4">วัดได้</span>
+        </div>
+        <div class="text-center">
+          <p>{{data.targetBg - data.bg}}</p>
+          <span class="text-grey-dark font-light mt-4">ส่วนต่าง</span>
+        </div>
+      </div>
+    </div> -->
+
+
+  </div>
+
 </ion-content>
