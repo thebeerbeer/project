@@ -3,21 +3,19 @@ import { ToastController } from 'ionic-angular/components/toast/toast-controller
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import BasePage from '../../base';
+import { AddFoodPage } from '../add-food/add-food';
+import * as moment from 'moment';
+import { ResultPage } from '../result/result';
 
-/**
- * Generated class for the InsulinPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
   selector: 'page-insulin',
   templateUrl: 'insulin.html',
 })
+
 export class InsulinPage extends BasePage {
 
   glucose: number;
@@ -28,6 +26,18 @@ export class InsulinPage extends BasePage {
 
   uid: string = '';
 
+  data = {
+    date: new Date(),
+    time: moment().format('hh:mm'),
+    targetBg: 0,
+    bg: 170,
+    tdd: 0,
+    isf: 0,
+    icr: 0,
+    carb: 0,
+  }
+
+  foods = [];
 
   constructor(
     public navCtrl: NavController,
@@ -35,13 +45,29 @@ export class InsulinPage extends BasePage {
     public firebaseAuth: AngularFireAuth,
     public firebaseFirestore: AngularFirestore,
     public ToastCtrl: ToastController,
-    public LoadingCtrl: LoadingController
+    public LoadingCtrl: LoadingController,
+    public modalCtrl: ModalController
   ) {
     super(ToastCtrl, LoadingCtrl)
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad InsulinPage');
+    this.firebaseFirestore
+      .collection('users')
+      .doc(this.firebaseAuth.auth.currentUser.uid)
+      .valueChanges() //ติดตามข้อมูลเวลาข้อมูลเปลี่ยนแปลง
+      .subscribe((data: any) => { //ติดตามข้อมูล
+
+        this.data.tdd = data.tdd;
+        this.data.isf = data.isf;
+        this.data.icr = data.icr;
+        this.data.targetBg = data.targetBg;
+
+        console.log(data)
+      })
+
+    console.log(this.data);
+
   }
 
   addglucose() {
@@ -60,5 +86,57 @@ export class InsulinPage extends BasePage {
         console.log('success')
         console.log(this.glucose)
       })
+  }
+
+  calculate() {
+    const bgDiff = this.data.bg - this.data.targetBg;
+    const collection = bgDiff / this.data.isf;
+
+    const carbBolus = this.data.carb / this.data.icr;
+
+    const bolusDose = collection + carbBolus;
+
+
+
+    this.firebaseFirestore
+      .collection('users')
+      .doc(this.firebaseAuth.auth.currentUser.uid)
+      .collection('glucose')
+      .doc(new Date(this.data.date).toDateString())
+      .set({});
+
+    this.firebaseFirestore
+      .collection('users')
+      .doc(this.firebaseAuth.auth.currentUser.uid)
+      .collection('glucose')
+      .doc(new Date(this.data.date).toDateString())
+      .collection("datas")
+      .add({
+        bolusDose: Math.ceil(bolusDose),
+        ...this.data
+      });
+
+
+    this.navCtrl.push(ResultPage, {
+      data: {
+        ...this.data,
+        bolusDose: Math.ceil(bolusDose),
+      },
+    });
+
+
+  }
+
+  selectFood() {
+    let addFoodModal = this.modalCtrl.create(AddFoodPage);
+    addFoodModal.onDidDismiss(data => {
+      this.foods = data.foods;
+      this.data.carb = this.foods.reduce((total, current) => total += current.carb, 0)
+    })
+    addFoodModal.present();
+  }
+
+  remove(index) {
+    this.foods.splice(index, 1);
   }
 }

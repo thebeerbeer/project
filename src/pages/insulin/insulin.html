@@ -12,57 +12,80 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-row>
-      <ion-col col-4 no-padding>
-        <img style="width: 114.328px; height: 110.547px;" src="assets/imgs/blood-drop.png">
-      </ion-col>
-      <div col-8 no-padding>
-        <h3 text-center>GLUCOSE</h3>
-        <h5 text-center>ระดับน้ำตาลในเลือด</h5>
+    <p class="ml-6 text-grey mt-8">
+      วันและเวลา
+    </p>
+    <ion-item>
+      <ion-label stacked>วันที่</ion-label>
+      <ion-datetime displayFormat="DD MMM YYYY" [(ngModel)]="data.date"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>เวลา</ion-label>
+      <ion-datetime displayFormat="hh:mm a" [(ngModel)]="data.time"></ion-datetime>
+    </ion-item>
+    <p class="ml-6 text-grey mt-8">
+      น้ำตาลในเลือด
+    </p>
+    <ion-item>
+      <ion-label color="primary" stacked>ระดับน้ำตาลในเลือด</ion-label>
+      <ion-input type="number" [(ngModel)]="data.bg"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>เป้าหมายน้ำตาลในเลือด</ion-label>
+      <ion-input type="number" [(ngModel)]="data.targetBg"></ion-input>
+    </ion-item>
 
-        <ion-item>
-          <ion-label floating>mg/dL (number only)</ion-label>
-          <ion-input type="number" [(ngModel)]="glucose"></ion-input>
-        </ion-item>
-      </div>
-    </ion-row>
-  </ion-list>
+    <p class="ml-6 text-grey mt-8">
+      ค่าคงที่ที่แพทย์กำหนด
+    </p>
+    <ion-item>
+      <ion-label color="primary" stacked>ปริมาณอินสูลินต่อวัน</ion-label>
+      <ion-input type="number" [(ngModel)]="data.tdd"></ion-input>
+    </ion-item>
 
-  <ion-list>
-      <ion-row>
-        <ion-col col-4 no-padding>
-          <img style="width: 114.328px; height: 110.547px;" src="assets/imgs/doughnut.png">
-        </ion-col>
-        <div col-8 no-padding>
-          <h3 text-center>CARBOHYDRATE</h3>
-          <h5 text-center>คาร์ปของอาหาร</h5>
-  
-          <ion-item>
-            <ion-label floating>mg/dL (number only)</ion-label>
-            <ion-input type="number" [(ngModel)]="glucose"></ion-input>
-          </ion-item>
-        </div>
-      </ion-row>
+    <ion-item>
+      <ion-label color="primary" stacked>ขนาดอินสุลินสําหรับการแก้ไขภาวะน้ําตาลในเลือดสูง </ion-label>
+      <ion-input type="number" [(ngModel)]="data.isf"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>ICR</ion-label>
+      <ion-input type="number" [(ngModel)]="data.icr"></ion-input>
+    </ion-item>
+
+    <p class="ml-6 text-grey mt-8">
+      อาหาร
+    </p>
+    <ion-item>
+      <ion-label color="primary" stacked>ปริมาณคาร์โบไฮเดรต</ion-label>
+      <ion-input type="number" [(ngModel)]="data.carb"></ion-input>
+    </ion-item>
+
+    <ion-list>
+
+      <ion-item *ngFor="let food of foods; let i = index">
+        <ion-label class="flex justify-between items-center">
+          <span>{{food.name}}</span>
+          <span class="text-grey text-xl">{{food.carb}} mgs.</span>
+          <button ion-button clear (click)="remove(index)">
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-label>
+
+      </ion-item>
     </ion-list>
 
-  <!-- <ion-list>
-    <ion-label color="primary">Basal insulin dose:</ion-label>
-    <ion-item>
-      <ion-input value="50%"></ion-input>
 
-      <ion-input placeholder="TDD"></ion-input>
+    <ion-item>
+      <button (click)="selectFood()" ion-button clear block>เพิ่มอาหาร</button>
     </ion-item>
+
+
+    <ion-input hidden></ion-input>
+
+    <div class="pl-6">
+      <button class="mt-8" (click)="calculate()" ion-button block>คำนวณ</button>
+    </div>
+
   </ion-list>
-
-  <ion-list>
-    <ion-label color="primary">Bolus insulin dose:</ion-label>
-    <ion-label color="primary">Carbohydrate bolus insulin:</ion-label>
-
-    <ion-item>
-      <ion-input placeholder="total carbohydrate (gm)"></ion-input>
-
-      <ion-input placeholder="500 ÷ total daily insulin"></ion-input>
-    </ion-item>
-  </ion-list> -->
-
 </ion-content>

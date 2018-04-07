@@ -23,6 +23,10 @@ export class ProfilePage extends BasePage {
   weight: number;
   gender: string;
   insulintype: string;
+  tdd: number;
+  isf: number;
+  icr: number;
+  targetBg: number;
 
   intype = [];
   results = [];
@@ -60,9 +64,15 @@ export class ProfilePage extends BasePage {
         this.weight = data.weight;
         this.gender = data.gender;
         this.insulintype = data.insulintype;
+        this.tdd = data.tdd;
+        this.isf = data.isf;
+        this.icr = data.icr;
+        this.targetBg = data.targetBg;
+
         console.log(data)
       })
 
+<<<<<<< HEAD
     // this.firebaseFirestore
     //   .collection('insulintype')
     //   .doc(this.name)
@@ -82,39 +92,64 @@ export class ProfilePage extends BasePage {
     //   )
        
        
+=======
+    this.firebaseFirestore
+      .collection('insulintype')
+      .doc(this.name)
+      .snapshotChanges()
+      .subscribe(
+        data => {
+          this.intype = [];
+          // data.map(action => {
+          //   this.intype.push({
+          //     id: action.payload.doc.id,
+          //     data: action.payload.doc.data()
+          //   })
+          // });
+          // this.results = this.intype;
+          // console.log(this.intype)
+        }
+      )
+>>>>>>> bd67e000efa6e0909396341de4bf45c6a440672e
 
 
 
-}
 
-save() {
-  this.showLoading("Updating...")
-  this.firebaseFirestore
-    .collection('users')
-    .doc(this.uid)
-    .update({
-      name: this.name,
-      age: this.age,
-      tel: this.tel,
-      height: this.height,
-      weight: this.weight,
-      gender: this.gender
-    })
-    .then(() => {
-      this.showToast("Updated successfully");
-      this.hideLoading();
 
-      this.navCtrl.pop();
-    })
-    .catch(error => {
-      this.showToast(error);
-      this.hideLoading();
-    })
+  }
 
-}
+  save() {
+    this.showLoading("Updating...")
+    this.firebaseFirestore
+      .collection('users')
+      .doc(this.uid)
+      .update({
+        name: this.name,
+        age: this.age,
+        tel: this.tel,
+        height: this.height,
+        weight: this.weight,
+        gender: this.gender,
+        isf: this.isf,
+        icr: this.icr,
+        tdd: this.tdd,
+        targetBg: this.targetBg,
+      })
+      .then(() => {
+        this.showToast("Updated successfully");
+        this.hideLoading();
 
-logout() {
-  this.firebaseAuth.auth.signOut();
-}
+        this.navCtrl.pop();
+      })
+      .catch(error => {
+        this.showToast(error);
+        this.hideLoading();
+      })
+
+  }
+
+  logout() {
+    this.firebaseAuth.auth.signOut();
+  }
 
 }

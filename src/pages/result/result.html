@@ -1,0 +1,39 @@
+<!--
+  Generated template for the ResultPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Result</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div class="flex justify-center flex-col items-center mt-8">
+    <div class="text-center border-4 flex flex-col justify-center rounded-full h-64 w-64 mb-8">
+      <span class="text-grey-darker font-light">ปริมาณอินสูริน</span>
+
+      <span class="text-5xl my-4 font-medium">{{data.bolusDose}}</span>
+      <span class="text-grey-darker font-light">units</span>
+    </div>
+    <div class="mt-8 flex justify-between w-3/4">
+      <div class="text-center">
+        <p>{{data.targetBg}}</p>
+        <span class="text-grey-dark font-light mt-4">เป้าหมาย</span>
+      </div>
+      <div class="text-center">
+        <p>{{data.bg}}</p>
+        <span class="text-grey-dark font-light mt-4">วัดได้</span>
+      </div>
+      <div class="text-center">
+        <p>{{data.targetBg - data.bg}}</p>
+        <span class="text-grey-dark font-light mt-4">ส่วนต่าง</span>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,31 @@
+<!--
+  Generated template for the AddFoodPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">Close</button>
+    </ion-buttons>
+    <ion-title>Select food</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item *ngFor="let food of foods">
+      <ion-checkbox [(ngModel)]="food.selected"></ion-checkbox>
+      <ion-label class="flex justify-between">
+        <span>{{food.name}}</span>
+        <span class="text-grey">{{food.carb}} mgs.</span>
+      </ion-label>
+
+    </ion-item>
+  </ion-list>
+</ion-content>
