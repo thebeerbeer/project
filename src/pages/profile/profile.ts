@@ -72,27 +72,6 @@ export class ProfilePage extends BasePage {
         console.log(data)
       })
 
-<<<<<<< HEAD
-    // this.firebaseFirestore
-    //   .collection('insulintype')
-    //   .doc(this.name)
-    //   .snapshotChanges()
-    //   .subscribe(
-    //     data => {
-    //       this.intype = [];
-    //       data.map(action => {
-    //         this.intype.push({
-    //           id: action.payload.doc.id,
-    //           data: action.payload.doc.data()
-    //         })
-    //       });
-    //       this.results = this.intype;
-    //       console.log(this.intype)
-    //     }
-    //   )
-       
-       
-=======
     this.firebaseFirestore
       .collection('insulintype')
       .doc(this.name)
@@ -110,7 +89,6 @@ export class ProfilePage extends BasePage {
           // console.log(this.intype)
         }
       )
->>>>>>> bd67e000efa6e0909396341de4bf45c6a440672e
 
 
 
