@@ -74,21 +74,8 @@ export class ProfilePage extends BasePage {
 
     this.firebaseFirestore
       .collection('insulintype')
-      .doc(this.name)
-      .snapshotChanges()
-      .subscribe(
-        data => {
-          this.intype = [];
-          // data.map(action => {
-          //   this.intype.push({
-          //     id: action.payload.doc.id,
-          //     data: action.payload.doc.data()
-          //   })
-          // });
-          // this.results = this.intype;
-          // console.log(this.intype)
-        }
-      )
+      .valueChanges()
+      .subscribe(data => this.intype = data)
 
 
 
@@ -111,6 +98,7 @@ export class ProfilePage extends BasePage {
         isf: this.isf,
         icr: this.icr,
         tdd: this.tdd,
+        insulintype: this.insulintype,
         targetBg: this.targetBg,
       })
       .then(() => {

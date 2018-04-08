@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 /**
  * Generated class for the AddFoodPage page.
@@ -17,32 +18,19 @@ export class AddFoodPage {
   selectedFood = [];
 
   foods = [
-    {
-      name: 'ข้าว',
-      carb: 16,
-      selected: false,
-    },
-    {
-      name: 'ขนม',
-      carb: 16,
-      selected: false,
-    }, {
-      name: 'ชมพู่',
-      carb: 16,
-      selected: false,
-    },
-    {
-      name: 'ฝรั่ง',
-      carb: 16,
-      selected: false,
-    }
+
   ]
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public afFirestore: AngularFirestore) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AddFoodPage');
+    this.afFirestore
+      .collection('foods')
+      .valueChanges()
+      .subscribe(foods => this.foods = foods);
+
+
   }
 
   dismiss() {

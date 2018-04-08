@@ -48,16 +48,41 @@ export class DocumentProvider {
           let pdfContent = {
             content: [
               {
-                text: `${user.name} : ${data.date}\n\n`,
-                style: "subheader"
+                text: [
+                  {
+                    text: 'รายงานระดับน้ำตาลในเลือด',
+                    style: 'code',
+                  },
+                  {
+                    text: ` ${data.date} `,
+                    style: 'detail',
+                    color: 'grey',
+                    alignment: 'right',
+                  },
+                ]
               },
               {
-                text: `อินสูลิน:  ${data.bolusDose} ยูนิต`,
-                style: "subheader"
+                text: [
+                  { text: `ชื่อ: `, style: 'detail', },
+                  { text: ` ${user.name} `, style: 'detail', color: 'grey' },
+                  { text: `อายุ: `, style: 'detail', },
+                  { text: ` ${user.age} `, style: 'detail', color: 'grey' },
+                  { text: `ส่วนสูง:  `, style: 'detail', },
+                  { text: ` ${user.height} `, style: 'detail', color: 'grey' },
+                  { text: `น้ำหนัก: `, style: 'detail', },
+                  { text: ` ${user.weight} `, style: 'detail', color: 'grey' },
+                ],
+              },
+              {
+                text: [
+                  { text: `อินสูลินที่ฉีด: `, style: 'detail', },
+                  { text: ` ${data.bolusDose} ยูนิต\n`, style: 'detail', color: 'grey' },
+                ],
+                margin: [0, 10],
               },
               {
                 text: 'ระดับน้ำตาล',
-                style: 'subheader'
+                style: 'detail'
               },
               {
                 style: 'tableExample',
@@ -66,16 +91,34 @@ export class DocumentProvider {
                   body: [
                     ['เป้าหมาย', 'ที่วัดได้', 'ส่วนต่าง'],
                     [
-                      { text: data.targetBg, italics: true, color: 'gray' },
-                      { text: data.bg, italics: true, color: 'gray' },
-                      { text: data.targetBg - data.bg, italics: true, color: 'gray' }
+                      { text: data.targetBg, color: 'gray' },
+                      { text: data.bg, color: 'gray' },
+                      { text: data.targetBg - data.bg, color: 'gray' }
+                    ]
+                  ]
+                }
+              },
+              {
+                text: 'ค่าคงที่ที่แพทย์กำหนด',
+                style: 'detail'
+              },
+              {
+                style: 'tableExample',
+                table: {
+                  widths: ['*', '*', '*',],
+                  body: [
+                    ['ความต้องการอินสูลินต่อวัน', 'ขนาดอินสุลินสําหรับการแก้ไขภาวะน้ําตาลในเลือดสูง', 'ISF'],
+                    [
+                      { text: user.tdd, color: 'gray' },
+                      { text: user.icr, color: 'gray' },
+                      { text: user.isf, color: 'gray' }
                     ]
                   ]
                 }
               },
               {
                 text: 'อาหาร',
-                style: 'subheader'
+                style: 'detail'
               },
               {
                 style: 'tableExample',

@@ -20,8 +20,8 @@
     <ion-item-sliding *ngFor="let emergency of results">
       <ion-item>
         <div padding-right>
-          <h1>{{emergency.data.name}}</h1>
-          <h3>{{emergency.data.tel}}</h3>
+          <h1>{{emergency.name}}</h1>
+          <h3>{{emergency.tel}}</h3>
         </div>
 
 
@@ -35,7 +35,7 @@
           <ion-icon name="ios-trash"></ion-icon>
           Delete
         </button>
-        <button ion-button color="secondary" (click)='call()'>
+        <button ion-button color="secondary" (click)='call(emergency.tel)'>
           <ion-icon name="call"></ion-icon>
           Call
         </button>

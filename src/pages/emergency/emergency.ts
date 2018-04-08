@@ -18,7 +18,9 @@ import { Action } from 'rxjs/scheduler/Action';
 export class EmergencyPage extends BasePage {
 
   items = [];
-  results = [];
+  results = [
+
+  ];
 
   uid: string = '';
 
@@ -36,10 +38,12 @@ export class EmergencyPage extends BasePage {
     super(ToastCtrl, LoadingCtrl)
   }
 
-  call() {
+  call(tel) {
+    console.log(tel);
+    
     this.uid = this.firebaseAuth.auth.currentUser.uid;
 
-    this.callNumber.callNumber("0882533948", true)
+    this.callNumber.callNumber(tel, true)
       .then(res => console.log('Launched dialer!', res))
       .catch(err => console.log('Error launching dialer', err));
   }
@@ -62,18 +66,23 @@ export class EmergencyPage extends BasePage {
       .snapshotChanges()
       .subscribe(
         data => {
-          this.items = [];
-          data.map(action => {
-            this.items.push({
-              id: action.payload.doc.id,
-              data: action.payload.doc.data()
-            })
-          });
+          const result = data.map(action => {
+            return {
+              ...action.payload.doc.data(),
+              id: action.payload.doc.id
+            }
+          })
 
-          this.results = this.items;
+          this.results = [
+            ...result,
+            {
+              name: 'การแพทย์ฉุกเฉิน',
+              tel: 1669
+            }
+          ]
+
 
           this.hideLoading();
-          console.log(this.items);
         },
         (error => {
           this.hideLoading();
@@ -96,9 +105,9 @@ export class EmergencyPage extends BasePage {
         this.showToast("Delete successfully")
       })
       .catch(error => {
-        this.hideLoading();
+    //    this.hideLoading();
         this.showToast(error)
-        console.log(emergencyId);
+      //  console.log(emergencyId);
       });
 
   }
