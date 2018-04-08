@@ -63,9 +63,8 @@
 
     <ion-item>
       <ion-label>Insulin type:</ion-label>
-      <ion-select>
-        <!-- [(ngModel)]="insulintype" -->
-        <ion-option *ngFor="let insuluntype of results">{{insulintype.data.name}}</ion-option>
+      <ion-select [(ngModel)]="insulintype">
+        <ion-option *ngFor="let insuluntype of intype">{{insuluntype.name}}</ion-option>
       </ion-select>
     </ion-item>
 
