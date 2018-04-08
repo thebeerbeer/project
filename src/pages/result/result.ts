@@ -29,7 +29,7 @@ export class ResultPage {
       });
 
       let saveResult = await this.document.save(blob)
-      this.fileOpenner.open(saveResult.nativeURL, 'application/pdf').catch(error => console.log(error))
+      this.fileOpenner.open(saveResult.nativeURL, 'application/pdf').catch(error => alert(JSON.stringify(error)))
 
 
     } catch (error) {
