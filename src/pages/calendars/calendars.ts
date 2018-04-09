@@ -29,8 +29,8 @@ export class CalendarsPage {
   segment = 'chart';
 
   public lineChartData: Array<any> = [
-    { data: [], label: 'ระดับน้ำตาลในเลือด' },
-    { data: [], label: 'เป้าหมาย' },
+    { data: [], label: 'ระดับน้ำตาลในเลือด (Glucose)' },
+    { data: [], label: 'เป้าหมาย (Glucose goals)' },
   ];
 
   public lineChartLabels: Array<any> = [];
