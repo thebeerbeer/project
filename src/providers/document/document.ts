@@ -10,13 +10,6 @@ import * as jsPDF from "jspdf";
 import { AngularFireAuth } from "angularfire2/auth";
 import { AngularFirestore } from "angularfire2/firestore";
 
-
-/*
-  Generated class for the DocumentProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class DocumentProvider {
 

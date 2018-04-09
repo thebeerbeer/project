@@ -14,3 +14,27 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+
+.text-input-md{
+    font-size: 1.7rem;
+}
+
+ion-datetime{
+    font-size: 1.7rem;
+
+}
+
+.label-md[stacked], .label-md[floating]{
+    font-size: 1.7rem;
+}
+
+.label-md{
+    font-size: 1.7rem;
+}
+
+
+.button-md{
+    font-size: 1.7rem;
+    padding:20px;
+}

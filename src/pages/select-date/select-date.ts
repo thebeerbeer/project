@@ -7,6 +7,8 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
   templateUrl: 'select-date.html',
 })
 export class SelectDatePage {
+  title = '';
+
   selectedDay = new Date();
   calendar = {
     mode: 'month',
@@ -22,6 +24,12 @@ export class SelectDatePage {
 
   onTimeSelected(ev) {
     this.selectedDay = ev.selectedTime.toDateString();
+
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+
+    this.title = `${monthNames[ev.selectedTime.getMonth() - 1]} ${ev.selectedTime.getFullYear()} `;
   }
 
   dismiss() {

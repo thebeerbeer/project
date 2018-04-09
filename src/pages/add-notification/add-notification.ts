@@ -11,7 +11,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 })
 export class AddNotificationPage {
 
-  public time;
+  public time = moment().format('hh:mm');
 
   constructor(
     public navCtrl: NavController,

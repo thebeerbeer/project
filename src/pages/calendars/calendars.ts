@@ -35,19 +35,32 @@ export class CalendarsPage {
 
   public lineChartLabels: Array<any> = [];
   public lineChartOptions: any = {
-    responsive: true
+    responsive: true,
+    scales: {
+      yAxes: [{ id: 'y-axis-1', type: 'linear', position: 'left', ticks: { min: 0 } }]
+    }
   };
 
   public lineChartColors: Array<any> = [
     {
-      backgroundColor: 'rgba(148,159,177,0.2)',
-      borderColor: 'rgba(148,159,177,1)',
-      pointBackgroundColor: 'rgba(148,159,177,1)',
+      backgroundColor: 'rgba(255, 99, 132,.2)',
+      borderColor: 'rgb(255, 99, 132)',
+      pointBackgroundColor: 'rgb(255, 99, 132)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    },
+    {
+      backgroundColor: 'rgba(54, 162, 235,.2)',
+      borderColor: 'rgb(54, 162, 235)',
+      pointBackgroundColor: 'rgb(54, 162, 235)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     },
   ];
+
+  public noEventsLabel = "";
 
   public lineChartLegend: boolean = true;
   public lineChartType: string = 'line';
@@ -86,8 +99,6 @@ export class CalendarsPage {
   onViewTitleChanged(title) {
     this.viewTitle = title;
   }
-
-
 
   onTimeSelected(date) {
     this.viewTitle = date;

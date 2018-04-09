@@ -30,7 +30,7 @@ export class InsulinPage extends BasePage {
     date: new Date(),
     time: moment().format('hh:mm'),
     targetBg: 0,
-    bg: 170,
+    bg: 0,
     tdd: 0,
     isf: 0,
     icr: 0,

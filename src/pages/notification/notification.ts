@@ -73,11 +73,7 @@ export class NotificationPage {
         .collection('notification')
         .doc(dataId)
         .delete()
-
-      alert(JSON.stringify(notis))
-
     } catch (error) {
-      alert(JSON.stringify(error))
     }
   }
 

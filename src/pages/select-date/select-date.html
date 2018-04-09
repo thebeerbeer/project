@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>SelectDate</ion-title>
+    <ion-title>{{title}}</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="dismiss()">
         <ion-icon name="close"></ion-icon>
@@ -17,6 +17,6 @@
 
 <ion-content padding>
   <calendar [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" (onTimeSelected)="onTimeSelected($event)" showEventDetail="false"
-    step="30" class="calendar-event-inner">
+    noEventsLabel="" step="30" class="calendar-event-inner">
   </calendar>
 </ion-content>
