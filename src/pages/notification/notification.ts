@@ -61,8 +61,6 @@ export class NotificationPage {
   }
 
   async delete(notificationId, dataId) {
-    alert(notificationId);
-
     try {
       await this.notification.cancel(notificationId);
       await this.notification.clear(notificationId);
@@ -74,6 +72,7 @@ export class NotificationPage {
         .doc(dataId)
         .delete()
     } catch (error) {
+
     }
   }
 
