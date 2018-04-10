@@ -63,7 +63,7 @@ export class NotificationPage {
   async delete(notificationId, dataId) {
     alert(notificationId);
 
-    try {
+    try { //ดักจับerrorให้วิ่งไปที่catch
       await this.notification.cancel(notificationId);
       await this.notification.clear(notificationId);
       const notis = await this.notification.getAll()
