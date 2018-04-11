@@ -11,7 +11,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 })
 export class AddNotificationPage {
 
-  public time = moment().format('hh:mm'); //momentจัดการเวลา ,เวลาปัจจุบัน 
+  public time = moment().format('hh:mm');
 
   constructor(
     public navCtrl: NavController,
@@ -49,7 +49,7 @@ export class AddNotificationPage {
     this.navCtrl.pop();
   }
 
-  ionViewDidLoad() { //เข้าหน้าpageนี่มาตอนแรก
+  ionViewDidLoad() {
     console.log('ionViewDidLoad AddNotificationPage');
   }
 

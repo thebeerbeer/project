@@ -112,8 +112,8 @@ export class InsulinPage extends BasePage {
       .doc(new Date(this.data.date).toDateString())
       .collection("datas")
       .add({
-        bolusDose: Math.ceil(bolusDose), //ปัดขึ้น
-        ...this.data,  //... ถอดปีกกาออก
+        bolusDose: Math.ceil(bolusDose),
+        ...this.data,
         foods: this.foods,
       });
 
@@ -133,7 +133,7 @@ export class InsulinPage extends BasePage {
     let addFoodModal = this.modalCtrl.create(AddFoodPage);
     addFoodModal.onDidDismiss(data => {
       this.foods = data.foods;
-      this.data.carb = this.foods.reduce((total, current) => total += current.carb, 0) //reduceช่วยลูป
+      this.data.carb = this.foods.reduce((total, current) => total += current.carb, 0)
     })
     addFoodModal.present();
   }
