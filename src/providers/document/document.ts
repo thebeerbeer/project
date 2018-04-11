@@ -68,7 +68,7 @@ export class DocumentProvider {
               },
               {
                 text: [
-                  { text: `อินสูลินที่ฉีด: `, style: 'detail', },
+                  { text: `อินซูลินที่ฉีด: `, style: 'detail', },
                   { text: ` ${data.bolusDose} ยูนิต\n`, style: 'detail', color: 'grey' },
                 ],
                 margin: [0, 10],
@@ -100,7 +100,7 @@ export class DocumentProvider {
                 table: {
                   widths: ['*', '*', '*',],
                   body: [
-                    ['ความต้องการอินสูลินต่อวัน', 'ขนาดอินสุลินสําหรับการแก้ไขภาวะน้ําตาลในเลือดสูง', 'ISF'],
+                    ['ความต้องการอินซูลินต่อวัน', 'ขนาดอินซูลินสําหรับการแก้ไขภาวะน้ําตาลในเลือดสูง', 'ISF'],
                     [
                       { text: user.tdd, color: 'gray' },
                       { text: user.icr, color: 'gray' },
