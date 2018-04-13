@@ -8,7 +8,7 @@ import { SelectDatePage } from '../select-date/select-date';
 import { PdfProvider } from '../../app/providers/pdf/pdf';
 import { DocumentProvider } from '../../providers/document/document';
 import { ResultPage } from '../result/result';
-
+import * as _ from "lodash";
 @IonicPage()
 @Component({
   selector: 'page-calendars',
@@ -31,6 +31,7 @@ export class CalendarsPage {
   public lineChartData: Array<any> = [
     { data: [], label: 'ระดับน้ำตาลในเลือด (Glucose)' },
     { data: [], label: 'เป้าหมาย (Glucose goals)' },
+    { data: [], label: 'คาร์โบไฮเดรต (Carbohydrate)' },
   ];
 
   public lineChartLabels: Array<any> = [];
@@ -54,6 +55,14 @@ export class CalendarsPage {
       backgroundColor: 'rgba(54, 162, 235,.2)',
       borderColor: 'rgb(54, 162, 235)',
       pointBackgroundColor: 'rgb(54, 162, 235)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    },
+    {
+      backgroundColor: 'rgba(255, 230, 170,.2)',
+      borderColor: 'rgb(255, 230, 170)',
+      pointBackgroundColor: 'rgb(255, 230, 170)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
@@ -111,12 +120,17 @@ export class CalendarsPage {
       .valueChanges() //ติดตามข้อมูลเวลาข้อมูลเปลี่ยนแปลง
       .subscribe((data: any) => {
         this.data = data;
-        console.log(this.data);
 
         setTimeout(() => {
           if (this.chart && this.chart.chart && this.chart.chart.config) {
+
+            data = _.sortedUniqBy(data, 'time');
+            console.log(data);
+
+
             this.lineChartData[0].data = data.map(item => Number.parseInt(item.bg));
             this.lineChartData[1].data = data.map(item => Number.parseInt(item.targetBg));
+            this.lineChartData[2].data = data.map(item => Number.parseInt(item.carb));
 
             this.lineChartLabels = data.map(item => item.time);
 

@@ -3,7 +3,7 @@ import { ToastController } from 'ionic-angular/components/toast/toast-controller
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import BasePage from '../../base';
 import { AddFoodPage } from '../add-food/add-food';
 import * as moment from 'moment';
@@ -46,7 +46,8 @@ export class InsulinPage extends BasePage {
     public firebaseFirestore: AngularFirestore,
     public ToastCtrl: ToastController,
     public LoadingCtrl: LoadingController,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    public alertCtrl: AlertController,
   ) {
     super(ToastCtrl, LoadingCtrl)
   }
@@ -93,39 +94,86 @@ export class InsulinPage extends BasePage {
     const collection = bgDiff / this.data.isf;
 
     const carbBolus = this.data.carb / this.data.icr;
+    const bolusDose = (collection + carbBolus < 0) ? 0 : collection + carbBolus;
 
-    const bolusDose = collection + carbBolus;
+    if (this.data.bg <= 70) {
+      let alert = this.alertCtrl.create({
+        title: 'คุณมีน้ำตาลในเลือดต่ำ ',
+        message: 'ยังต้องการฉีดอินซูลินหรือไม่?',
+        buttons: [
+          {
+            text: 'ไม่',
+            handler: () => {
+              return;
+            }
+          },
+          {
+            text: 'ใช่',
+            handler: () => {
+              this.firebaseFirestore
+                .collection('users')
+                .doc(this.firebaseAuth.auth.currentUser.uid)
+                .collection('glucose')
+                .doc(new Date(this.data.date).toDateString())
+                .set({});
+
+              this.firebaseFirestore
+                .collection('users')
+                .doc(this.firebaseAuth.auth.currentUser.uid)
+                .collection('glucose')
+                .doc(new Date(this.data.date).toDateString())
+                .collection("datas")
+                .add({
+                  bolusDose: Math.ceil(bolusDose),
+                  ...this.data,
+                  foods: this.foods,
+                });
 
 
+              this.navCtrl.push(ResultPage, {
+                data: {
+                  ...this.data,
+                  foods: this.foods,
+                  bolusDose: Math.ceil(bolusDose),
+                },
+              });
 
-    this.firebaseFirestore
-      .collection('users')
-      .doc(this.firebaseAuth.auth.currentUser.uid)
-      .collection('glucose')
-      .doc(new Date(this.data.date).toDateString())
-      .set({});
-
-    this.firebaseFirestore
-      .collection('users')
-      .doc(this.firebaseAuth.auth.currentUser.uid)
-      .collection('glucose')
-      .doc(new Date(this.data.date).toDateString())
-      .collection("datas")
-      .add({
-        bolusDose: Math.ceil(bolusDose),
-        ...this.data,
-        foods: this.foods,
+            }
+          }
+        ]
       });
 
+      alert.present();
+    } else {
+      this.firebaseFirestore
+        .collection('users')
+        .doc(this.firebaseAuth.auth.currentUser.uid)
+        .collection('glucose')
+        .doc(new Date(this.data.date).toDateString())
+        .set({});
 
-    this.navCtrl.push(ResultPage, {
-      data: {
-        ...this.data,
-        foods: this.foods,
-        bolusDose: Math.ceil(bolusDose),
-      },
-    });
+      this.firebaseFirestore
+        .collection('users')
+        .doc(this.firebaseAuth.auth.currentUser.uid)
+        .collection('glucose')
+        .doc(new Date(this.data.date).toDateString())
+        .collection("datas")
+        .add({
+          bolusDose: Math.ceil(bolusDose),
+          ...this.data,
+          foods: this.foods,
+        });
 
+
+      this.navCtrl.push(ResultPage, {
+        data: {
+          ...this.data,
+          foods: this.foods,
+          bolusDose: Math.ceil(bolusDose),
+        },
+      });
+
+    }
 
   }
 
