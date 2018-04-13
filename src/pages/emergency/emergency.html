@@ -24,7 +24,9 @@
           <h3>{{emergency.tel}}</h3>
         </div>
 
-
+        <button color="danger" clear ion-button icon-only item-end (click)='call(emergency.tel)'>
+          <ion-icon name="call"></ion-icon>
+        </button>
       </ion-item>
       <ion-item-options side="right">
         <!-- <button ion-button>
@@ -35,10 +37,7 @@
           <ion-icon name="ios-trash"></ion-icon>
           Delete
         </button>
-        <button ion-button color="secondary" (click)='call(emergency.tel)'>
-          <ion-icon name="call"></ion-icon>
-          Call
-        </button>
+
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
