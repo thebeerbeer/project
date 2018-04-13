@@ -34,47 +34,47 @@
 
     <ion-item>
       <ion-label>Height:
-        <br> (ส่วนสูง)
+        <br> <p>(ส่วนสูง)</p>
       </ion-label>
       <ion-input type="number" [(ngModel)]="height"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Weight:
-        <br> (น้ำหนัก)
+        <br> <p>(น้ำหนัก)</p>
       </ion-label>
       <ion-input type="number" [(ngModel)]="weight"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Glucose goals:
-        <br> (เป้าหมายน้ำตาล) </ion-label>
+        <br><p>(เป้าหมายน้ำตาล)</p>  </ion-label>
       <ion-input type="number" [(ngModel)]="targetBg"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>TDD:
-        <br> (Total daily dose)
+        <br> <p>(Total daily dose)</p>
       </ion-label>
       <ion-input type="number" [(ngModel)]="tdd"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>ISF:
-        <br> (ขนาดอินซูลินสำหรับแก้ไขน้ำตาลในเลือดสูง)
+      <ion-label>ISF: (1 : ...)
+        <br> <p>(อินซูลินแก้ไขน้ำตาลในเลือดสูง)</p>
       </ion-label>
       <ion-input type="number" [(ngModel)]="isf"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>ICR:
-        <br> (ขนาดอินซูลินที่ใช้จัดการคาร์โบไฮเดรต)
+      <ion-label>ICR: (1 : ...)
+        <br> <p>(อินซูลินใช้จัดการคาร์โบไฮเดรต)</p>
       </ion-label>
       <ion-input type="number" [(ngModel)]="icr"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Insulin type:
-        <br> (อินซูลินที่ใช้)
+        <br> <p>(ชนิดอินซูลิน)</p>
       </ion-label>
       <ion-select [(ngModel)]="insulintype">
         <ion-option *ngFor="let insuluntype of intype">{{insuluntype.name}}</ion-option>
