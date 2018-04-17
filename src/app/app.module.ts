@@ -37,6 +37,7 @@ import { PdfProvider } from './providers/pdf/pdf';
 import { DocumentProvider } from '../providers/document/document';
 import { File } from '@ionic-native/file';
 import { FileOpener } from '@ionic-native/file-opener';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 var config = {
   apiKey: "AIzaSyDr40HSmTxehzzjJO2AfcM0O7b8Lj1dMTg",
@@ -109,7 +110,8 @@ var config = {
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     DocumentProvider,
     File,
-    FileOpener
+    FileOpener,
+    SocialSharing
   ]
 })
 export class AppModule { }

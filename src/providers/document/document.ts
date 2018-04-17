@@ -129,7 +129,7 @@ export class DocumentProvider {
           };
 
           try {
-            pdfMake.createPdf(pdfContent).download();
+          //  pdfMake.createPdf(pdfContent).download();
             pdfMake.createPdf(pdfContent).getBlob(blob => {
               resolve(blob);
             });
