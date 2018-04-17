@@ -127,7 +127,7 @@ export class InsulinPage extends BasePage {
                   bolusDose: Math.ceil(bolusDose),
                   ...this.data,
                   foods: this.foods,
-                });
+                })
 
 
               this.navCtrl.push(ResultPage, {
@@ -138,6 +138,7 @@ export class InsulinPage extends BasePage {
                 },
               });
 
+              this.reset();
             }
           }
         ]
@@ -173,6 +174,9 @@ export class InsulinPage extends BasePage {
         },
       });
 
+      this.reset();
+
+
     }
 
   }
@@ -188,5 +192,10 @@ export class InsulinPage extends BasePage {
 
   remove(index) {
     this.foods.splice(index, 1);
+  }
+
+  reset() {
+    this.data.bg = 0;
+    this.data.carb = 0;
   }
 }
