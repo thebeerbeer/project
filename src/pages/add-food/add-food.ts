@@ -21,7 +21,12 @@ export class AddFoodPage {
 
   ]
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public afFirestore: AngularFirestore) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public viewCtrl: ViewController, 
+    public afFirestore: AngularFirestore
+  ) {
   }
 
   ionViewDidLoad() {
