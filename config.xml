@@ -95,6 +95,6 @@
     </plugin>
     <plugin name="cordova-plugin-x-socialsharing" spec="^5.3.2" />
     <engine name="browser" spec="5.0.3" />
-    <engine name="android" spec="~7.0.0" />
     <plugin name="mx.ferreyra.callnumber" spec="0.0.2" />
+    <engine name="android" spec="~7.0.0" />
 </widget>
