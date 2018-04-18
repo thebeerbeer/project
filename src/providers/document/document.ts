@@ -33,6 +33,7 @@ export class DocumentProvider {
 
           const foodRow = data.foods.map(food => {
             return [
+              
               { text: food.name, italics: true, color: 'gray' },
               { text: food.carb, italics: true, color: 'gray' }
             ]
@@ -110,7 +111,10 @@ export class DocumentProvider {
                 }
               },
               {
-                text: 'อาหาร',
+                text: [
+                  { text: `คาร์โบไฮเดรต: `, style: 'detail', },
+                  { text: ` ${data.carb} กรัม\n`, style: 'detail', color: 'grey' },
+                ],
                 style: 'detail'
               },
               {
@@ -129,7 +133,7 @@ export class DocumentProvider {
           };
 
           try {
-          //  pdfMake.createPdf(pdfContent).download();
+            pdfMake.createPdf(pdfContent).download();
             pdfMake.createPdf(pdfContent).getBlob(blob => {
               resolve(blob);
             });
