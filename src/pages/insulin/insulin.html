@@ -24,8 +24,7 @@
       <ion-datetime displayFormat="hh:mm a" [(ngModel)]="data.time"></ion-datetime>
     </ion-item>
     <p class="ml-6 text-grey mt-8">
-      น้ำตาลในเลือด
-      (GLUCOSE)
+      น้ำตาลในเลือด (GLUCOSE)
     </p>
     <ion-item>
       <ion-label color="primary" stacked>ที่วัดได้</ion-label>
@@ -37,16 +36,19 @@
     </ion-item>
 
     <p class="ml-6 text-grey mt-8">
-      ค่าคงที่ที่แพทย์กำหนด
-      (TDD & ISF & ICR)
+      ค่าคงที่ที่แพทย์กำหนด (TDD & ISF & ICR)
     </p>
     <ion-item>
       <ion-label color="primary" stacked>ปริมาณอินซูลินต่อวัน</ion-label>
-      <ion-input type="number"  [(ngModel)]="data.tdd"></ion-input>
+      <ion-input type="number" [(ngModel)]="data.tdd"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label color="primary" stacked>ISF  1 : </ion-label>
+      <ion-label color="primary" stacked>ISF (1 : ... )
+        <br>
+        <p>(อินซูลินแก้ไขน้ำตาลในเลือดสูง)</p>
+      </ion-label>
+
       <ion-input type="number" placeholder="1 : ..." [(ngModel)]="data.isf"></ion-input>
     </ion-item>
 

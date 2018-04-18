@@ -60,7 +60,7 @@ export class ResultPage {
         this.socialSharing.share(
           "Body",
           "Subject",
-          // ["natthaponsricort@gmail.com"],
+     
           // undefined,
           // undefined,
           this.nativeURL
@@ -70,7 +70,7 @@ export class ResultPage {
         this.socialSharing.share(
           "Body",
           "Subject",
-          // ["natthaponsricort@gmail.com"],
+
           // undefined,
           // undefined,
           this.nativeURL
