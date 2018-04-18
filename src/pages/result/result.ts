@@ -21,8 +21,9 @@ export class ResultPage {
 
   }
 
-  ionViewDidLoad() {
+  async ionViewDidLoad() {
     console.log('ionViewDidLoad ResultPage');
+    await this.createPdf();
   }
 
   async createPdf() {

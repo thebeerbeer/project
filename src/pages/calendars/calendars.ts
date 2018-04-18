@@ -117,8 +117,17 @@ export class CalendarsPage {
       .collection('glucose')
       .doc(date)
       .collection('datas', ref => ref.orderBy('time'))
-      .valueChanges() //ติดตามข้อมูลเวลาข้อมูลเปลี่ยนแปลง
+      // .valueChanges()
+      .snapshotChanges() //ติดตามข้อมูลเวลาข้อมูลเปลี่ยนแปลง
       .subscribe((data: any) => {
+
+        data = data.map(action => {
+          return {
+            ...action.payload.doc.data(),
+            id: action.payload.doc.id
+          }
+        })
+
         this.data = data;
 
         setTimeout(() => {
@@ -161,6 +170,17 @@ export class CalendarsPage {
       data: data
     })
 
+
+  }
+
+  delete(id) {
+    this.firebaseFirestore.collection('users')
+      .doc(this.firebaseAuth.auth.currentUser.uid)
+      .collection('glucose')
+      .doc(this.viewTitle)
+      .collection('datas')
+      .doc(id)
+      .delete();
 
   }
 }

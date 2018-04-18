@@ -93,7 +93,7 @@ export class InsulinPage extends BasePage {
     const bgDiff = this.data.bg - this.data.targetBg;
     const collection = bgDiff / this.data.isf;
 
-    const carbBolus = this.data.carb / this.data.icr;
+    const carbBolus = this.data.carb * this.data.icr / 15;
     const bolusDose = (collection + carbBolus < 0) ? 0 : collection + carbBolus;
 
     if (this.data.bg <= 70) {
