@@ -185,7 +185,7 @@ export class InsulinPage extends BasePage {
     let addFoodModal = this.modalCtrl.create(AddFoodPage);
     addFoodModal.onDidDismiss(data => {
       this.foods = data.foods;
-      this.data.carb = this.foods.reduce((total, current) => total += current.carb, 0)
+      this.data.carb = parseInt(this.data.carb.toString()) +  parseInt(this.foods.reduce((total, current) => total += current.carb, 0));
     })
     addFoodModal.present();
   }
