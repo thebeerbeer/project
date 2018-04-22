@@ -73,7 +73,7 @@
       <ion-item *ngFor="let food of foods; let i = index">
         <ion-label class="flex justify-between items-center">
           <span>{{food.name}}</span>
-          <span class="text-grey text-xl">{{food.carb}} mgs.</span>
+          <span class="text-grey text-xl">{{food.carb}} g.</span>
           <button ion-button clear (click)="remove(index)">
             <ion-icon name="trash"></ion-icon>
           </button>

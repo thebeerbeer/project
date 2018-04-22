@@ -2,9 +2,9 @@ import { AddcallnumPage } from './../pages/addcallnum/addcallnum';
 import { CallNumber } from '@ionic-native/call-number';
 // import { EventModalPage } from './../pages/event-modal/event-modal';
 import { CalendarsPage } from './../pages/calendars/calendars';
-import { GraphPage } from './../pages/graph/graph';
-import { GlucosePage } from './../pages/glucose/glucose';
-import { ExportPage } from './../pages/export/export';
+// import { GraphPage } from './../pages/graph/graph';
+// import { GlucosePage } from './../pages/glucose/glucose';
+// import { ExportPage } from './../pages/export/export';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -54,12 +54,12 @@ var config = {
     HomePage,
     ProfilePage,
     EmergencyPage,
-    ExportPage,
+    // ExportPage,
     LoginPage,
     RegisterPage,
-    GlucosePage,
+    // GlucosePage,
     InsulinPage,
-    GraphPage,
+    // GraphPage,
     CalendarsPage,
     AddcallnumPage,
     NotificationPage,
@@ -85,12 +85,12 @@ var config = {
     HomePage,
     ProfilePage,
     EmergencyPage,
-    ExportPage,
+    // ExportPage,
     LoginPage,
     RegisterPage,
-    GlucosePage,
+    // GlucosePage,
     InsulinPage,
-    GraphPage,
+    // GraphPage,
     CalendarsPage,
     AddcallnumPage,
     NotificationPage,

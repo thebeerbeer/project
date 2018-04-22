@@ -14,11 +14,18 @@ export class ResultPage {
   data = {};
 
   nativeURL = ''
+  foodCarb = 0;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public document: DocumentProvider, public fileOpenner: FileOpener, public socialSharing: SocialSharing) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public document: DocumentProvider, 
+    public fileOpenner: FileOpener, 
+    public socialSharing: SocialSharing
+  ) {
     this.data = this.navParams.get('data');
-    console.log(this.data);
 
+    this.foodCarb = this.data.foods.reduce((total, food) => total += food.carb, 0);    
   }
 
   async ionViewDidLoad() {

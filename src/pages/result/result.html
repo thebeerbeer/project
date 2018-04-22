@@ -41,12 +41,20 @@
   </div>
   <ion-item-group class="mt-8">
     <ion-item-divider color="light">อาหาร</ion-item-divider>
-    <ion-item *ngFor="let food of data.foods" (click)="showResult(food)">
+    <ion-item *ngFor="let food of data.foods">
       <ion-label class="flex justify-between items-center">
         <div class="text-center flex flex-col">
           <span class="text-2xl text-grey-darker font-medium">{{food.name}} </span>
         </div>
-        <span class="text-grey text-xl">{{food.carb}} mgs</span>
+        <span class="text-grey text-xl">{{food.carb}} g(s)</span>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label class="flex justify-between items-center">
+        <div class="text-center flex flex-col">
+          <span class="text-2xl text-grey-darker font-medium">อื่นๆ</span>
+        </div>
+        <span class="text-grey text-xl">{{data.carb - foodCarb}} g(s)</span>
       </ion-label>
     </ion-item>
   </ion-item-group>

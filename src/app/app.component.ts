@@ -1,9 +1,9 @@
 import { EmergencyPage } from './../pages/emergency/emergency';
-import { GraphPage } from './../pages/graph/graph';
-import { GlucosePage } from './../pages/glucose/glucose';
+// import { GraphPage } from './../pages/graph/graph';
+// import { GlucosePage } from './../pages/glucose/glucose';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { LoginPage } from './../pages/login/login';
-import { ExportPage } from './../pages/export/export';
+// import { ExportPage } from './../pages/export/export';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -51,10 +51,10 @@ export class MyApp {
 
       { title: 'Profile', component: ProfilePage},
       { title: 'Menu', component: HomePage },
-      { title: 'Glucose', component: GlucosePage },
-      { title: 'Graph', component: GraphPage },
+      // { title: 'Glucose', component: GlucosePage },
+      // { title: 'Graph', component: GraphPage },
       { title: 'Emergency', component: EmergencyPage },
-      { title: 'Export', component: ExportPage },
+      // { title: 'Export', component: ExportPage },
       { title: 'Notification', component: NotificationPage }
 
 

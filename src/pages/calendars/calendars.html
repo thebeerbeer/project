@@ -29,9 +29,13 @@
 
   <div [ngSwitch]="segment">
 
-    <canvas *ngSwitchCase="'chart'" class="mb-8" #chart baseChart width="360" height="300" [(datasets)]="lineChartData" [labels]="lineChartLabels"
-      [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)"
+    <canvas *ngSwitchCase="'chart'" class="mb-8" #chart baseChart width="360" height="300" 
+    [(datasets)]="lineChartData" [labels]="lineChartLabels"
+    [options]="lineChartOptions" [colors]="lineChartColors" 
+    [legend]="lineChartLegend" [chartType]="lineChartType" 
+    (chartHover)="chartHovered($event)"
       (chartClick)="chartClicked($event)"></canvas>
+
 
     <div>
       <ion-list *ngSwitchCase="'info'">

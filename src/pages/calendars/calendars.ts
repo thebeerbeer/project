@@ -120,11 +120,12 @@ export class CalendarsPage {
       // .valueChanges()
       .snapshotChanges() //ติดตามข้อมูลเวลาข้อมูลเปลี่ยนแปลง
       .subscribe((data: any) => {
-
+        console.log(data);
+        
         data = data.map(action => {
           return {
             ...action.payload.doc.data(),
-            id: action.payload.doc.id
+            id: action.payload.doc.id,
           }
         })
 
@@ -134,7 +135,7 @@ export class CalendarsPage {
           if (this.chart && this.chart.chart && this.chart.chart.config) {
 
             data = _.sortedUniqBy(data, 'time');
-            console.log(data);
+            console.log(data.map(item => Number.parseInt(item.bg)));
 
 
             this.lineChartData[0].data = data.map(item => Number.parseInt(item.bg));

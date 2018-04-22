@@ -33,12 +33,16 @@ export class DocumentProvider {
 
           const foodRow = data.foods.map(food => {
             return [
-              
+
               { text: food.name, italics: true, color: 'gray' },
               { text: food.carb, italics: true, color: 'gray' }
+
             ]
           });
 
+
+          const foodCarb = data.foods.reduce((total, food) => total += food.carb, 0);
+          
           let pdfContent = {
             content: [
               {
@@ -122,8 +126,9 @@ export class DocumentProvider {
                 table: {
                   widths: ['*', '*',],
                   body: [
-                    ['ที่วัดได้', 'ส่วนต่าง'],
-                    ...foodRow
+                    ['รายการ', 'ปริมาณคาร์โบไฮเดรต(กรัม)'],
+                    ...foodRow,
+                    ['อื่นๆ', ` ${data.carb - foodCarb} ` ],
                   ]
                 }
               },
