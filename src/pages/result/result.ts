@@ -11,7 +11,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 })
 export class ResultPage {
 
-  data = {};
+  data;
 
   nativeURL = ''
   foodCarb = 0;
