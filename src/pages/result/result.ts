@@ -30,7 +30,7 @@ export class ResultPage {
 
   async ionViewDidLoad() {
     console.log('ionViewDidLoad ResultPage');
-    await this.createPdf();
+    //await this.createPdf();
   }
 
   async createPdf() {
