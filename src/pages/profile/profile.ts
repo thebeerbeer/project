@@ -73,7 +73,7 @@ export class ProfilePage extends BasePage {
       })
 
     this.firebaseFirestore
-      .collection('insulintype')
+      .collection('insulintype',ref => ref.orderBy('type'))
       .valueChanges()
       .subscribe(data => this.intype = data)
 

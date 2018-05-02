@@ -145,6 +145,13 @@ export class InsulinPage extends BasePage {
       });
 
       alert.present();
+    } else if(this.data.bg > 300){
+      let alert = this.alertCtrl.create({
+        title: 'คำเตือน',
+        subTitle: 'ในเลือดต้องไม่เกิน 300',
+        buttons: ['ตกลง']
+      });
+      alert.present();
     } else {
       this.firebaseFirestore
         .collection('users')
@@ -197,5 +204,9 @@ export class InsulinPage extends BasePage {
   reset() {
     this.data.bg = 0;
     this.data.carb = 0;
+  }
+
+  onBgChange(event){    
+    if(event > 300) this.data.bg = 300;
   }
 }
